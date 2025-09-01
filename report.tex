@@ -1,1 +1,101 @@
-na
+\documentclass{article}
+  
+\usepackage{amsthm}
+\theoremstyle{plain} 
+   \newtheorem{theorem}{Theorem}[section]
+   \newtheorem{corollary}[theorem]{Corollary}
+   \newtheorem{lemma}[theorem]{Lemma}
+   \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+   \newtheorem{definition}[theorem]{Definition}
+   \newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}    
+  \newtheorem{remark}[theorem]{Remark}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage{parskip}
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+  \hypersetup{
+    colorlinks = true,
+    urlcolor = blue,
+    linkcolor= blue,
+    citecolor= blue,
+    filecolor= blue,
+    }
+
+\title{The MU Puzzle}
+\author{Tommy Golbranson\\ Chapman University}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document will attempt to prove the impossibility of the MU-Puzzle from Chapter 1 of \href{https://www.physixfan.com/wp-content/files/GEBen.pdf}{AN ETERNAL GOLDEN BRAID}.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+The MU puzzle is a challenge to form the string $MU$ from the starting string $MI$, following a set of rules:
+
+\begin{enumerate}
+    \item \textbf{Rule I:} If you possess a string whose last letter is $I$, you can add on a $U$ at the end. 
+    \item \textbf{Rule II:} Suppose you have $Mx$. Then you may add $Mxx$ to your collection. 
+    \item \textbf{Rule III:} If $III$ occurs in one of the strings in your collection, you may make a new
+    string with $U$ in place of $III$.
+    \item \textbf{Rule IV:} If $UU$ occurs inside one of your strings, you can drop it.
+\end{enumerate}
+This puzzle is an interesting exercise of formulating proofs and theorems, and as the book explains, is more about the process and thinking through it than the solution itself.
+
+\section{Analysis}
+From my understanding of the puzzle, the only way to achieve $MU$ is by eliminating the starting $I$ or getting a string of $I$'s that is divisibile by 3, i.e. for $Mxx..x$, $x mod 3 = 0$.
+
+\begin{lemma}
+Rule II allows the string after $M$ to be doubled, but for any string of $n$ $I$'s, the prime factorization of $n$ is always 2*2*...*2.
+\end{lemma}
+
+\begin{proof}
+Repeating Rule 2, we get:
+
+\begin{enumerate}
+  \item \textbf{Step 1:} $MI$
+  \item \textbf{Step 2:} $MII$ (2*2)
+  \item \textbf{Step 3:} $MIIII$ (2*2*2)
+  \item \textbf{Step 4:} $MIIIIIIII$ (2*2*2*2)
+  \item \textbf{etc...}
+\end{enumerate}
+
+Rule III allows a U to be exchanged for a string of $III$, but there will always be an $I$ leftover, as seen in the steps above.
+
+Rules I and IV allow the number of $U$'s to vary, but this will never affect the number of $I$'s in the string.
+
+Therefore, it is impossible to achieve $MU$ from $MI$ by the set of rules.
+
+  
+\end{proof}
+
+\section{Main Result}
+\begin{theorem}
+As shown, it is impossible to achieve $MU$ from $MI$ by the set of rules allowed. The string of $I$'s will never be divisible by 3 without remainder, so there will always be at least 1 $I$ in the string. Therefore $MU$, which has no $I$, is impossible to achieve.
+\end{theorem}
+
+\begin{remark}
+$MU$ is only achievable by a different starting condition, a different set of rules, or both.
+\end{remark}
+
+\section{Conclusion}
+The goal of the puzzle was to achieve $MU$ from a starting string $MI$ which has been shown to be impossible. The key to this puzzle was the number of $I$'s never being divisible by 3. Since $MU$ is only achievable by eliminating all $I$'s, the goal is impossible.
+
+\begin{thebibliography}{99}
+\bibitem{Hofstadter} D. Hofstadter, \textit{Gödel, Escher, Bach: An Eternal Golden Braid}, Basic Books, 1979.
+\end{thebibliography}
+
+\end{document}
